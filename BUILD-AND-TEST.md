@@ -15,7 +15,8 @@ wasavi building and testing guide
   * gcc
   * Information of your AMO account (to build and sign wasavi.xpi)  
     create ~/.amo-account.ini and describe the account info in the following format:
-    ```
+  
+  ```
   AMO_API_KEY=<API key of your AMO account>
   AMO_API_SECRET=<Secret key of your AMO account>
   ```
