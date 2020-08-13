@@ -5865,6 +5865,14 @@ const modeHandlers = {
 };
 
 /*
+ * commandStates  <<<1
+ * -------------
+ */
+const commandState = {
+	lastExecutedMacro: null,
+}
+
+/*
  * command mode mapping <<<1
  * ----------------
  */
@@ -7337,6 +7345,13 @@ const commandMap = {
 			requestShowPrefixInput(_('{0}: register [{1}]', o.e.key, registers.readableList));
 		},
 		wait_a_letter:function (c) {
+		    if (c) {
+		    	if (c === '@') {
+		    		c = commandState.lastExecutedMacro;
+				} else {
+		    		commandState.lastExecutedMacro = c;
+				}
+			}
 			if (!registers.isReadable(c)) {
 				requestShowMessage(_('Invalid register name: {0}', c), true);
 				return inputEscape();
