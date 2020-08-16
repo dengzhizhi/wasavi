@@ -1,7 +1,7 @@
 About This Forked Version
 =========================
 
-wasavi is one of my most faviourite project but it seems not active since 2017. So I am going implementing some features I need in this forked repository.
+wasavi is one of my most faviourite project but it seems not active since 2017. So I am going implementing some features I need in this forked repository. It is for personal usage for now, I'll just work on the Chrome version and have no plan to publish it on extension store. I am using it by enable `developer mode` in `chrome://extensions/` and load the `src/chrome` directory via `Load unpacked`. 
 
 Features implemented 
 ---------------------
