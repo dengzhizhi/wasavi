@@ -6903,10 +6903,9 @@ const commandMap = {
 	'\u0006'/*^F*/:function () {return this['\u0002'].apply(this, arguments)},
 	'<pagedown>':function () {return this['\u0002'].apply(this, arguments)},
 	// screen adjustment
-	//   z<CR> (top of the screen)
-	//   z.    (center of the screen)
-	//   zz
-	//   z-    (bottom of the screen)
+	//   zt or z<CR> (top of the screen)
+	//   z. or zz    (center of the screen)
+	//   zb or z-    (bottom of the screen)
 	z:{
 		command:function (c, o) {
 			if (!prefixInput.isEmptyOperation) {
@@ -6939,6 +6938,7 @@ const commandMap = {
 
 			switch (motion) {
 			case '\u000d':
+			case 't':
 				buffer.scrollLeft = 0;
 				buffer.setSelectionRange(buffer.getLineTopOffset2(n));
 				invalidateIdealWidthPixels();
@@ -6952,6 +6952,7 @@ const commandMap = {
 				return scroller.run(dest);
 
 			case '-':
+			case 'b':
 				buffer.scrollLeft = 0;
 				var dest = Math.max(current - (buffer.elm.clientHeight - lineHeight), 0);
 				buffer.setSelectionRange(buffer.getLineTopOffset2(n));
