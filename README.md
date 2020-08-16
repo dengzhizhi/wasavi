@@ -1,3 +1,17 @@
+About This Forked Version
+=========================
+
+wasavi is one of my most faviourite project but it seems not active since 2017. So I am going implementing some features I need in this forked repository.
+
+Features implemented 
+---------------------
+
+* `@@` - Replay the last used macro
+
+----
+
+(Following is the original README content)
+
 wasavi (VI editor for any web page)
 ====================================
 
