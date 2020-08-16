@@ -7,6 +7,7 @@ Features implemented
 ---------------------
 
 * `@@` - Replay the last used macro
+* Use vim original `zt` and `zb` for scrolling to top and bottom (Wasavi customed binding `z<CR>` and `z-` still supported) 
 
 ----
 
