@@ -7631,7 +7631,39 @@ const commandMap = {
 			recordedStrokes.add('bound').strokes = c;
 		}
 	},
-	V:function () {return this.v.apply(this, arguments)}
+	V:function () {return this.v.apply(this, arguments)},
+
+	/*
+	 * Some none-standard handy features.
+	 *
+	 * \t - insert a timestamp
+	 */
+	'\\': {
+		command: function(c, o) {
+			requestInputMode('wait_a_letter');
+		},
+		wait_a_letter: function(c) {
+			switch (c) {
+				case 't':
+					paste(1, {
+						content: '[' + new Date().toLocaleString(undefined, {
+							weekday: 'long',
+							year: 'numeric',
+							month: 'short',
+							day: 'numeric',
+							hour: '2-digit',
+							minute: '2-digit',
+							second: '2-digit',
+						}) + '] ',
+						isForward: true,
+					});
+					break;
+				default:
+					break;
+			}
+			return true;
+		}
+	},
 
 	/*
 	 * not implemented
