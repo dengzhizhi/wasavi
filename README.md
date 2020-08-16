@@ -7,7 +7,8 @@ Features implemented
 ---------------------
 
 * `@@` - Replay the last used macro
-* Use vim original `zt` and `zb` for scrolling to top and bottom (Wasavi customed binding `z<CR>` and `z-` still supported) 
+* Use vim original binding `zt` and `zb` for scrolling to top and bottom (Wasavi customized binding `z<CR>` and `z-` still supported) 
+* `\t` in normal mode to insert a timestamp
 
 ----
 
