@@ -8960,7 +8960,6 @@ if (global.WasaviExtensionWrapper
 		else if (req.payload) {
 			diag('running wasavi in iframe');
 			testMode = req.payload.testMode;
-			console.log(req);
 			run(function() {install(req.payload, req);});
 		}
 	});
