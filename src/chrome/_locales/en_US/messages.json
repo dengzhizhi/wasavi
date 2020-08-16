@@ -604,6 +604,10 @@
 		"message": "Invalid regex source string value",
 		"description": "Invalid regex source string value"
 	},
+	"no_last_used_macro_recorded": {
+		"message": "No last used macro",
+		"description": "No last used macro"
+	},
 	"invalid_register_name_@0": {
 		"message": "Invalid register name: {0}",
 		"description": "Invalid register name: {0}"

@@ -51,6 +51,7 @@ diag('defining classes');
 		get config () {return config},
 		get version () {return version},
 
+		get macroRunner () {return macroRunner},
 		get registers () {return registers},
 
 		get targetElement () {return targetElement},
@@ -1324,6 +1325,9 @@ function install (x, req) {
 	buffer.selectionStart = x.selectionStart || 0;
 	buffer.selectionEnd = x.selectionEnd || 0;
 
+	macroRunner = new Wasavi.MacroRunner(
+		appProxy,
+		testMode || !('macroRunner' in req) ? null : req.macroRunner);
 	registers = new Wasavi.Registers(
 		appProxy,
 		testMode || !('registers' in req) ? null : req.registers);
@@ -5865,14 +5869,6 @@ const modeHandlers = {
 };
 
 /*
- * commandStates  <<<1
- * -------------
- */
-const commandState = {
-	lastExecutedMacro: null,
-}
-
-/*
  * command mode mapping <<<1
  * ----------------
  */
@@ -7345,11 +7341,15 @@ const commandMap = {
 			requestShowPrefixInput(_('{0}: register [{1}]', o.e.key, registers.readableList));
 		},
 		wait_a_letter:function (c) {
-		    if (c) {
-		    	if (c === '@') {
-		    		c = commandState.lastExecutedMacro;
+			if (c) {
+				if (c === '@') {
+					c = macroRunner.getLastUsed();
+					if (!c) {
+						requestShowMessage(_('no_last_used_macro_recorded', c), true);
+						return inputEscape();
+					}
 				} else {
-		    		commandState.lastExecutedMacro = c;
+					macroRunner.setLastUsed(c);
 				}
 			}
 			if (!registers.isReadable(c)) {
@@ -8846,6 +8846,7 @@ var fileSystemIndex;
 var preferredNewline;
 var terminated;
 var state;
+var macroRunner;
 var registers;
 var lineInputHistories;
 var lineInputInfo;
@@ -8959,6 +8960,7 @@ if (global.WasaviExtensionWrapper
 		else if (req.payload) {
 			diag('running wasavi in iframe');
 			testMode = req.payload.testMode;
+			console.log(req);
 			run(function() {install(req.payload, req);});
 		}
 	});

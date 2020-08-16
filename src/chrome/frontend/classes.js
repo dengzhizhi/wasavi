@@ -1068,6 +1068,39 @@ Wasavi.LineInputHistories = function (app, maxSize, names, value) {
 	value = null;
 };
 
+Wasavi.MacroRunner = function(app, opts) {
+	/*
+	 * For now it is just a configuration manager
+	 */
+
+	const storageKey = 'wasavi_macro_runner';
+	let lastUsed;
+
+	const serialize = () => ({lastUsed});
+	const save = () => {
+		app.low.setLocalStorage(storageKey, serialize())
+	}
+	const load = (payload) => {
+		if (!isObject(payload)) return;
+		if (!payload.lastUsed) return;
+
+		lastUsed = payload.lastUsed;
+	}
+	const getLastUsed = () => lastUsed;
+	const setLastUsed = (c) => {
+	    if (typeof c === 'string' && c.length >= 1) {
+	        lastUsed = c.charAt(0);
+			save();
+		}
+	};
+
+	publish(this,
+		getLastUsed, setLastUsed
+	);
+
+	load(opts);
+}
+
 Wasavi.MapManager = function MapManager (app, opts) {
 	function MapGroup (name) {
 		this.name = name;

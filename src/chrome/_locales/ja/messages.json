@@ -604,6 +604,10 @@
 		"message": "不正な正規表現ソース",
 		"description": "Invalid regex source string value"
 	},
+	"no_last_used_macro_recorded": {
+		"message": "最後に使用したマクロはありません",
+		"description": "最後に使用したマクロはありません"
+	},
 	"invalid_register_name_@0": {
 		"message": "不正なレジスタ名: {0}",
 		"description": "Invalid register name: {0}"

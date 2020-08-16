@@ -171,6 +171,7 @@
 		local: {
 			version: {def: ''},
 			wasavi_lineinput_histories: {def: {}},
+			wasavi_macro_runner: {def: {}},
 			wasavi_registers: {def: {}}
 		}
 	};
@@ -615,6 +616,7 @@
 			o.unicodeDictData = unicodeDictData;
 			o.lineInputHistories = config.get('wasavi_lineinput_histories');
 			o.registers = config.get('wasavi_registers');
+			o.macroRunner = config.get('wasavi_macro_runner');
 		}
 
 		// for agent and options
