@@ -1,7 +1,7 @@
 About This Forked Version
 =========================
 
-wasavi is one of my most faviourite project but it seems not active since 2017. So I am going to implementing some features I need in this forked repository. It is for personal usage for now, I'll just work on the Chrome version and have no plan to publish it on extension store. It can be install to Chrome locally by enabling `developer mode` in `chrome://extensions/` and loading the `src/chrome` directory with the `Load unpacked` button. 
+wasavi is one of my faviourite projects but it seems not active since 2017. So I am going to implementing some features I need in this forked repository. It is for personal usage for now, I'll just work on the Chrome version and have no plan to publish it on extension store. It can be install to Chrome locally by enabling `developer mode` in `chrome://extensions/` and loading the `src/chrome` directory with the `Load unpacked` button. 
 
 Features implemented 
 ---------------------
